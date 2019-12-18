@@ -1,5 +1,5 @@
 [package]
-name = "json_schema"
+name = "validjson"
 version = "0.1.0"
 authors = ["Mezner <mezner@russellmyers.com>"]
 edition = "2018"
