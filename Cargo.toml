@@ -6,6 +6,7 @@ edition = "2018"
 license = "MIT OR Apache-2.0"
 description = "Simple JSON schema and content validator executable"
 repository = "https://github.com/Mezner/validjson"
+readme = "README.md"
 
 [dependencies]
 valico = "3.1.0"
