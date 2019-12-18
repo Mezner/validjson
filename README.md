@@ -1,6 +1,11 @@
 # validjson
 Simple JSON schema validator based on valico and serde_json that can be run from console.
 
+## Install
+```
+cargo install validjson
+```
+
 ## Usage
 ```
 USAGE:
