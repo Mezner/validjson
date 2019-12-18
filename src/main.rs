@@ -17,7 +17,7 @@ struct Opts {
     schema: PathBuf,
 
     /// JSON content file[s]
-    #[structopt(name = "CONTENT", required=true)]
+    #[structopt(name = "CONTENT")]
     content: Vec<PathBuf>,
 }
 
