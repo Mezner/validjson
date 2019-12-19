@@ -19,16 +19,20 @@ struct Opts {
     /// JSON content file[s]
     #[structopt(name = "CONTENT")]
     content: Vec<PathBuf>,
+
+    /// Ignore unknwon keywords in schema validation
+    #[structopt(short)]
+    ignore_unknowns: bool,
 }
 
 fn main() {
     let opts = Opts::from_args();
     let mut scope = Scope::new();
-    let schema = compile_schema_or_exit(&mut scope, opts.schema);
+    let schema = compile_schema_or_exit(&mut scope, opts.schema, opts.ignore_unknowns);
     validate_content(&schema, &opts.content);
 }
 
-fn compile_schema_or_exit<'a>(scope: &'a mut Scope, path: PathBuf) -> ScopedSchema<'a> {
+fn compile_schema_or_exit<'a>(scope: &'a mut Scope, path: PathBuf, ignore_unknowns: bool) -> ScopedSchema<'a> {
     let result = File::open(path.clone());
     let reader = match result {
         Err(_er) => {
@@ -47,7 +51,7 @@ fn compile_schema_or_exit<'a>(scope: &'a mut Scope, path: PathBuf) -> ScopedSche
         Ok(json) => json,
     };
 
-    let result = scope.compile_and_return(json.clone(), false);
+    let result = scope.compile_and_return(json.clone(), ignore_unknowns);
     match result {
         Err(er) => {
             eprintln!("{:?}: Error compiling schema: {:?}", path, er);
