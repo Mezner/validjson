@@ -51,7 +51,7 @@ fn compile_schema_or_exit<'a>(scope: &'a mut Scope, path: PathBuf, ignore_unknow
         Ok(json) => json,
     };
 
-    let result = scope.compile_and_return(json.clone(), ignore_unknowns);
+    let result = scope.compile_and_return(json.clone(), !ignore_unknowns);
     match result {
         Err(er) => {
             eprintln!("{:?}: Error compiling schema: {:?}", path, er);
