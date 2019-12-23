@@ -81,11 +81,18 @@ fn validate_content(schema: &ScopedSchema, content: &Vec<PathBuf>) {
         };
         let json: Value = json;
         let validation_state = schema.validate(&json);
-        println!("{:?}: schema valid: {}", c, validation_state.is_valid());
-        if !validation_state.is_valid() {
+        if validation_state.is_valid() {
+            println!("{:?}: valid against schema", c);
+        } else {
             println!("{:?}: Validation errors:", c);
             for er in validation_state.errors {
-                println!("{:?}", er);
+                println!("------");
+                println!("Code: {}", er.get_code());
+                println!("Path: {}", er.get_path());
+                println!("Title: {}", er.get_title());
+                if let Some(detail) = er.get_detail() {
+                    println!("Detail: {}", detail);
+                }
             }
         }
     }
