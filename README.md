@@ -9,10 +9,11 @@ cargo install validjson
 ## Usage
 ```
 USAGE:
-    validjson <SCHEMA> [CONTENT]...
+    validjson [FLAGS] <SCHEMA> [CONTENT]...
 
 FLAGS:
     -h, --help       Prints help information
+    -i               Ignore unknwon keywords in schema validation
     -V, --version    Prints version information
 
 ARGS:
