@@ -13,7 +13,7 @@ USAGE:
 
 FLAGS:
     -h, --help       Prints help information
-    -i               Ignore unknwon keywords in schema validation
+    -i               Ignore unknown keywords in schema validation
     -V, --version    Prints version information
 
 ARGS:
