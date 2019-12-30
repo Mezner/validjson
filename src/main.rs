@@ -20,7 +20,7 @@ struct Opts {
     #[structopt(name = "CONTENT")]
     content: Vec<PathBuf>,
 
-    /// Ignore unknwon keywords in schema validation
+    /// Ignore unknown keywords in schema validation
     #[structopt(short)]
     ignore_unknowns: bool,
 }
